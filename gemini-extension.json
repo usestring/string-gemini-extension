@@ -1,0 +1,12 @@
+{
+  "name": "string-web-access",
+  "version": "1.0.0",
+  "description": "Fetch, search and map any website as clean Markdown, without getting blocked.",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "string-web-access": {
+      "httpUrl": "https://mcp.usestring.ai/v1/mcp",
+      "headers": { "Authorization": "Bearer ${STRING_API_KEY}" }
+    }
+  }
+}
