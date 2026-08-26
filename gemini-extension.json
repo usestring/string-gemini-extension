@@ -1,8 +1,16 @@
 {
   "name": "string-web-access",
   "version": "1.0.0",
-  "description": "Fetch, search and map any website as clean Markdown, without getting blocked.",
+  "description": "Fetch, search and map any website as clean, LLM-ready Markdown, without getting blocked.",
   "contextFileName": "GEMINI.md",
+  "settings": [
+    {
+      "name": "API Key",
+      "description": "Your String Web Access API key, from portal.usestring.ai",
+      "envVar": "STRING_API_KEY",
+      "sensitive": true
+    }
+  ],
   "mcpServers": {
     "string-web-access": {
       "httpUrl": "https://mcp.usestring.ai/v1/mcp",
