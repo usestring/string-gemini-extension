@@ -1,15 +1,18 @@
 # String Web Access
 
-Three tools for getting real web content into this session.
+Four tools for getting real web content into this session.
 
 - `web_access_fetch` — fetch one URL and get clean Markdown back. Use when you already know
   the page you need. Handles JavaScript rendering, anti-bot protection and CAPTCHAs.
+- `web_access_request` — send a POST, PUT or PATCH with a body to a URL. Use when an endpoint
+  takes a payload rather than serving a page you read.
 - `web_access_search` — run a web search and get structured results. Use when you need to
   find the page first.
 - `web_access_sitemap` — crawl a site and return its URLs. Use when you need coverage of a
   whole site rather than a single page.
 
-All three are read-only.
+`web_access_fetch` and `web_access_search` are read-only. `web_access_request` writes and
+`web_access_sitemap` creates billed crawl jobs, so both prompt before they run.
 
 Prefer these over a plain HTTP request for any site that rate-limits, geo-gates or blocks
 automated traffic, which is most commercial sites.

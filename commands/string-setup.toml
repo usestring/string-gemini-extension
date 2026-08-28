@@ -1,4 +1,4 @@
-description = "Set up String Web Access — check the connection and confirm all three tools respond."
+description = "Set up String Web Access — check the connection and confirm its read tools respond."
 prompt = """Verify that String Web Access is configured and working.
 
 1. Confirm the API key setting is present. If it is missing, tell the user to create a key at https://portal.usestring.ai and run `gemini extensions config string-web-access`, then stop.

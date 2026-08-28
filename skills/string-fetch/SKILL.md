@@ -5,8 +5,8 @@ description: |
   the user gives you a URL, asks you to read, open, summarize or extract from a page, or when
   a search result needs its full content. Handles proxy rotation, anti-bot protection,
   CAPTCHAs and JavaScript rendering, so it works on sites that block ordinary requests. Also
-  supports POST/PUT/PATCH, custom headers, country-specific proxies and driving a real
-  browser through clicks and scrolls before capture.
+  supports custom headers, country-specific proxies and driving a real browser through clicks
+  and scrolls before capture. Reads only — to send a POST, PUT or PATCH, use string-request.
 ---
 
 # String fetch
@@ -35,7 +35,6 @@ Everything below is optional and should stay off unless a plain fetch has actual
 | `format` | `markdown` (default, for reading), `raw` (verbatim body), `json` (envelope with `statusCode`, `headers`, `data`) |
 | `executeJS` | The body comes back empty or as a loading shell — the page is client-rendered. Cannot be combined with `headers` |
 | `actions` | The content only exists after a click, scroll or form submit — see [browser actions](../string-web-access/references/browser-actions.md) |
-| `method` + `body` | You need POST, PUT or PATCH. `body` is rejected on GET |
 | `headers` | The site requires a specific header. Max 50. Not supported with `executeJS` |
 | `countryCode` | The page is geo-gated or serves regional content. ISO 3166-1 alpha-2, e.g. `"US"` |
 | `solveCaptcha` | Defaults true. Set false to fail fast instead of waiting on a challenge |
@@ -54,10 +53,10 @@ Everything below is optional and should stay off unless a plain fetch has actual
 
 // You need the status code and headers, not just the body
 { "url": "https://example.com/api/health", "format": "json" }
-
-// A JSON API that wants a POST
-{ "url": "https://api.example.com/search", "method": "POST", "body": { "q": "widgets" } }
 ```
+
+This tool only issues a GET. A JSON API that wants a POST belongs to
+[string-request](../string-request/SKILL.md).
 
 ## Choosing a format
 

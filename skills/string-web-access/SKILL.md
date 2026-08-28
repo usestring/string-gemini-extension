@@ -11,7 +11,7 @@ description: |
 
 # String Web Access
 
-Three tools, one rule for choosing between them.
+Four tools, one rule for choosing between them.
 
 Server: `https://mcp.usestring.ai/v1/mcp` (configured by this plugin). Authentication is a
 bearer API key from [portal.usestring.ai](https://portal.usestring.ai).
@@ -25,6 +25,7 @@ bearer API key from [portal.usestring.ai](https://portal.usestring.ai).
 | A question, no URL | `web_access_search` | [string-search](../string-search/SKILL.md) |
 | A URL | `web_access_fetch` | [string-fetch](../string-fetch/SKILL.md) |
 | A site, need every page | `web_access_sitemap` | [string-sitemap](../string-sitemap/SKILL.md) |
+| An endpoint to write to | `web_access_request` | [string-request](../string-request/SKILL.md) |
 | A page that needs clicking, typing or logging in | `web_access_fetch` with `actions` | [browser actions](references/browser-actions.md) |
 
 Most work never leaves `fetch`. Reach for `actions` only when the content genuinely does not
