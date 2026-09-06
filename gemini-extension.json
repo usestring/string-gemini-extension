@@ -1,6 +1,6 @@
 {
   "name": "string-web-access",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fetch, search and map any website as clean, LLM-ready Markdown, without getting blocked.",
   "contextFileName": "GEMINI.md",
   "settings": [
