@@ -21,6 +21,21 @@ gemini extensions config string-web-access
 You can also set `STRING_API_KEY` in your environment instead. Never paste the key into a
 chat message and never commit it.
 
+## Authentication
+
+Two ways into the hosted server.
+
+**API key.** What this extension uses. The key is sent as an `Authorization: Bearer` header on
+every request.
+
+**Sign in with String.** The server also speaks OAuth, for clients that support remote MCP
+connectors. A browser window opens, the consent screen asks to grant `web_access` and shows a
+picker of your organisation's active keys, and you choose which one the app may spend. Connected
+apps are listed in [settings](https://portal.usestring.ai/settings) with the key each one uses,
+and disconnecting takes effect within a minute. Claude and ChatGPT support this today. The
+Gemini CLI is not wired up for it yet, so use the key above. See
+[the remote MCP docs](https://portal.usestring.ai/docs/mcp/remote).
+
 ## Try it
 
 Ask Gemini in plain language:
