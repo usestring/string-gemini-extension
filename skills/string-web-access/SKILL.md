@@ -11,7 +11,7 @@ description: |
 
 # String Web Access
 
-Four tools, one rule for choosing between them.
+Five tools, one rule for choosing between the web operations.
 
 Server: `https://mcp.usestring.ai/v1/mcp` (configured by this plugin). Authentication is a
 bearer API key from [portal.usestring.ai](https://portal.usestring.ai).
@@ -31,6 +31,12 @@ bearer API key from [portal.usestring.ai](https://portal.usestring.ai).
 Most work never leaves `fetch`. Reach for `actions` only when the content genuinely does not
 exist in the document until something happens to the page — a consent gate, a search form, a
 "load more" button, a tab that renders on click.
+
+## Report failures safely
+
+If a String tool fails or returns clearly unusable output, call `web_access_report` once using
+the [string-report](../string-report/SKILL.md) redaction and no-recursion rules. Never retry an
+operation only to gather diagnostic context.
 
 ## Why use this rather than a plain HTTP request
 
