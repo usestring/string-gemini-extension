@@ -71,7 +71,7 @@ to name them.
 | Tool | What it does | Effect |
 | --- | --- | --- |
 | `web_access_fetch` | Fetch one URL as Markdown | read-only |
-| `web_access_search` | Web search with structured results | read-only |
+| `web_access_search` | Web search: ranked results plus the knowledge panel, AI overview, local pack and other surfaces Google rendered; optional `searchCount` (1–50) | read-only |
 | `web_access_request` | Send a POST, PUT or PATCH with a body | writes, prompts first |
 | `web_access_sitemap` | Crawl a site and return its URLs | billed job, quotes first |
 
