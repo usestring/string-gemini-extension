@@ -68,7 +68,7 @@ the page carried it, is never merged into `results`, and only Google returns it:
 | `answers` | One widget under `localTime`, `currency`, `unitConversion`, `weather`, `translation`, `sports` or `flights`. |
 | `spelling` | `{ kind, query, asked }` — `substituted` means the results are for the corrected query, `suggested` means they are for the query as typed. |
 | `ads`, `videos`, `shortVideos`, `discussions`, `images`, `sitelinks` | Ranked blocks, each entry with `position`, `title` and `url`. |
-| `paging` | `{ pages, complete }`, only when `searchCount` was sent. |
+| `paging` | `{ pages, complete }`, only when `searchCount` was sent. `pages` is how many results pages answered, each billed as one search. `complete: false` means the search was cut short (a later page could not be fetched, or the time budget ran out before `searchCount`) and `results` holds what was collected; fewer results with `complete: true` means Google had no more, the ten-page cap was reached, or the first page carried no organic results (a local pack or knowledge panel alone is not paged). Surfaces describe the first page only; positions run on across pages. |
 
 A query naming a single business often comes back with `results` empty and the answer in
 `entity` or `places` — read those before treating an empty `results` as no answer.
