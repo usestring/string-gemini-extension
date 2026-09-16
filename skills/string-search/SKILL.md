@@ -5,8 +5,10 @@ description: |
   user wants to search the web, find articles or sources, look up current information, check
   recent news, or says "search for", "find me", "look up", "what's the latest on", "who is",
   or asks anything needing information from the live internet rather than training data.
-  Returns organic results with position, title, URL, snippet and display URL. Bypasses the
-  anti-bot protection that blocks scraping search engines directly.
+  Returns organic results with position, title, URL, snippet and display URL, plus whatever
+  Google rendered around them: knowledge panel, AI overview with cited sources, local pack,
+  People also ask, related searches, videos, discussions. Bypasses the anti-bot protection
+  that blocks scraping search engines directly.
 ---
 
 # String search
@@ -27,12 +29,20 @@ Do not use it when you already have the URL — go straight to
 { "query": "anthropic claude pricing per million tokens" }
 ```
 
-`query` is the only parameter. Be specific and descriptive — this is a real Google query, so
-everything you know about writing one applies.
+`query` is required. Be specific and descriptive — this is a real Google query, so everything
+you know about writing one applies.
+
+`searchCount` is optional: how many organic results you want, an integer from 1 to 50 (above 50
+is rejected). Google is paged, up to 10 pages, until that many are in hand, and each page is
+billed as one search. Omit it for one page, about 10 results.
+
+```json
+{ "query": "construction consulting firms Ohio", "searchCount": 30 }
+```
 
 ## What comes back
 
-An array of organic results, each with:
+`results`, the ranked organic documents, each with:
 
 | Field | What it is |
 | --- | --- |
@@ -41,6 +51,27 @@ An array of organic results, each with:
 | `url` | Full URL — pass this to `web_access_fetch` |
 | `snippet` | Google's extract, often enough on its own |
 | `displayUrl` | The breadcrumb Google shows |
+
+`zeroResults` is `true` when Google itself reported that nothing matched — broaden the query
+rather than retry.
+
+Every other field is a surface Google rendered around the documents. Each is present only when
+the page carried it, is never merged into `results`, and only Google returns it:
+
+| Field | What it carries |
+| --- | --- |
+| `entity` | The knowledge panel for the one business or person the query named: `title`, `subtitle`, `description` and its `descriptionSource`, `rating`, `reviews`, `website`, labelled `attributes` (address, phone, hours), social `profiles`. |
+| `places` | Local-pack business listings: `name`, `category`, `rating`, `reviews`, `address`, `phone`, `hours`, `url`, `mapsUrl`. |
+| `overviews` | Google's AI overviews. The first entry with no `topic` is the query's own summary; entries with a `topic` and `question` are the "Things to know" tabs; `declined: true` marks a frame Google did not fill. Each has `text` and cited `sources` as `{ title, url }`. |
+| `peopleAlsoAsk` | `{ question }` entries; answers are not on the page. |
+| `relatedSearches` | Query strings Google suggests. |
+| `answers` | One widget under `localTime`, `currency`, `unitConversion`, `weather`, `translation`, `sports` or `flights`. |
+| `spelling` | `{ kind, query, asked }` — `substituted` means the results are for the corrected query, `suggested` means they are for the query as typed. |
+| `ads`, `videos`, `shortVideos`, `discussions`, `images`, `sitelinks` | Ranked blocks, each entry with `position`, `title` and `url`. |
+| `paging` | `{ pages, complete }`, only when `searchCount` was sent. |
+
+A query naming a single business often comes back with `results` empty and the answer in
+`entity` or `places` — read those before treating an empty `results` as no answer.
 
 ## Read the snippets first
 
@@ -61,5 +92,5 @@ two or three pages actually earn a fetch, then fetch those.
 
 ## Limits
 
-Results are organic Google results only — no ads, no knowledge panel, no "people also ask".
+An overview is Google's summary, not a source: cite and read its `sources`, not the summary.
 If you need the content of a result, that is a separate `web_access_fetch` call.
