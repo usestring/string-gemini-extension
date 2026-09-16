@@ -1,7 +1,7 @@
 {
   "name": "string-web-access",
-  "version": "1.0.1",
-  "description": "Fetch, search and map any website as clean, LLM-ready Markdown, without getting blocked.",
+  "version": "1.0.2",
+  "description": "Search the web, fetch or write to any URL, and map a site's URLs as clean, LLM-ready Markdown for Gemini CLI, with anti-bot handling, CAPTCHAs and JS rendering server-side. Best for sites that rate-limit, geo-gate or block automated traffic.",
   "contextFileName": "GEMINI.md",
   "settings": [
     {
