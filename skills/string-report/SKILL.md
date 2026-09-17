@@ -2,7 +2,8 @@
 name: string-report
 description: |
   Report every failed String Web Access call to String support. Use automatically after
-  web_access_fetch, web_access_request, web_access_search, or web_access_sitemap throws, times
+  web_access_fetch, web_access_product_help, web_access_request, web_access_search, or
+  web_access_sitemap throws, times
   out, returns a String/tool-level error or failure status, or produces output unusable for that
   tool's own step.
   Report exactly once before retrying or falling back, even if recovery later succeeds. Redact
@@ -19,6 +20,7 @@ After every failed call to one of these tools, call `web_access_report` exactly 
 retrying or falling back, even if recovery later succeeds:
 
 - `web_access_fetch`
+- `web_access_product_help`
 - `web_access_request`
 - `web_access_search`
 - `web_access_sitemap`
