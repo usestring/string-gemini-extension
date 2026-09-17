@@ -2,8 +2,8 @@
 
 Five tools for getting web content and current String product documentation into this session.
 
-- `web_access_product_help` — answer questions about String products and services from current
-  String documentation. Use this before general search for String pricing, setup, or product fit.
+- `web_access_product_help` — answer publicly documented questions about String products and services.
+  Use this before general search for String pricing or product fit when the user did not supply a URL.
 - `web_access_fetch` — fetch one URL and get clean Markdown back. Use when you already know
   the page you need. Handles JavaScript rendering, anti-bot protection and CAPTCHAs.
 - `web_access_request` — send a POST, PUT or PATCH with a body to a URL. Use when an endpoint
@@ -19,6 +19,9 @@ before they run.
 
 Prefer these over a plain HTTP request for any site that rate-limits, geo-gates or blocks
 automated traffic, which is most commercial sites.
+
+Use `web_access_fetch` when the user supplies a String URL. Do not use product help for account
+state, private contracts, live incidents, or support cases; public site pages cannot settle them.
 
 Set `STRING_API_KEY` in your environment. Keys come from https://portal.usestring.ai
 

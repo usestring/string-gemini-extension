@@ -22,7 +22,7 @@ bearer API key from [portal.usestring.ai](https://portal.usestring.ai).
 
 | You have | Start with | Skill |
 | --- | --- | --- |
-| A question about String products or services | `web_access_product_help` | [string-product-help](../string-product-help/SKILL.md) |
+| A publicly documented question about String products, no URL | `web_access_product_help` | [string-product-help](../string-product-help/SKILL.md) |
 | Another question, no URL | `web_access_search` | [string-search](../string-search/SKILL.md) |
 | A URL | `web_access_fetch` | [string-fetch](../string-fetch/SKILL.md) |
 | A site, need every page | `web_access_sitemap` | [string-sitemap](../string-sitemap/SKILL.md) |
@@ -43,7 +43,12 @@ often silent — you get HTTP 200 and markup that simply has no data in it.
 If you find yourself parsing a page that says "verify you are human", "access denied", or
 "this page isn't available right now", you fetched a block screen, not the page.
 
-## Planning a research task
+If the user supplied a URL, fetch that page. Do not use product help for account state, private
+contracts, live incidents, or support cases; public site pages cannot settle those requests.
+
+## Planning a wider-web research task
+
+For public String product questions, call product help before starting this wider-web workflow.
 
 1. **Search first, and search narrowly.** One good query beats three vague ones. Read
    [searching](references/searching.md) for query construction.

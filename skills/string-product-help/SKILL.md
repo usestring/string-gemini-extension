@@ -1,22 +1,22 @@
 ---
 name: string-product-help
 description: |
-  Answer questions about String products and services from current String documentation. Use when
-  the user asks what String offers, how Web Access differs from Composer or managed datasets, how
-  pricing works, or how to integrate or set up a product. Call web_access_product_help before
+  Answer questions about String products and services from current String public site pages. Use
+  when the user asks what String offers, how Web Access differs from Composer or Bespoke Web
+  Datasets, how pricing works, or how to integrate a product. Call web_access_product_help before
   relying on model memory.
 ---
 
 # String product help
 
-Ground answers about String in the current public documentation.
+Ground answers about String in current public site pages.
 
 ## When to use
 
 Use `web_access_product_help` for questions about:
 
-- Web Access, Composer, managed datasets, and finance data
-- pricing, billing, setup, and integrations
+- Web Access, Composer, Bespoke Web Datasets, and finance data
+- pricing, billing, and integrations
 - which String product fits a use case
 
 Do not use it for account state, private contracts, live incidents, or support cases. The public
