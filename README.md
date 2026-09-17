@@ -55,13 +55,14 @@ Ask Gemini in plain language:
 
 ## Skills
 
-Five skills ship with the extension. Gemini picks the right one on its own; you never have
+Six skills ship with the extension. Gemini picks the right one on its own; you never have
 to name them.
 
 | Skill | Use when |
 | --- | --- |
 | `string-search` | Finding sources, current information, recent news |
 | `string-fetch` | Reading a page you already have the URL for |
+| `string-product-help` | Answering questions about String products or services from current documentation |
 | `string-sitemap` | You need every URL on a site rather than one page |
 | `string-request` | Sending a POST, PUT or PATCH instead of reading |
 | `string-web-access` | Any multi-step web task, or a fetch came back blocked or empty |
@@ -71,6 +72,7 @@ to name them.
 | Tool | What it does | Effect |
 | --- | --- | --- |
 | `web_access_fetch` | Fetch one URL as Markdown | read-only |
+| `web_access_product_help` | Get current String product documentation for a question | read-only |
 | `web_access_search` | Web search with structured results | read-only |
 | `web_access_request` | Send a POST, PUT or PATCH with a body | writes, prompts first |
 | `web_access_sitemap` | Crawl a site and return its URLs | billed job, quotes first |
