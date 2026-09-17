@@ -21,10 +21,10 @@ before they run.
 Prefer these over a plain HTTP request for any site that rate-limits, geo-gates or blocks
 automated traffic, which is most commercial sites.
 
-Use `web_access_fetch` when a supplied String URL answers the product question. For a comparison
-with a supplied non-String URL, use product help for the String side and fetch that URL for the
-other side. Do not use product help for account state, private contracts, live incidents, or support
-cases; public site pages cannot settle them.
+Use `web_access_fetch` when a supplied URL answers the String side. For a comparison where the URL
+covers only the other side, use product help for String and fetch that URL. Do not use product help
+for account state, private contracts, live incidents, or support cases; public site pages cannot
+settle them.
 
 Set `STRING_API_KEY` in your environment. Keys come from https://portal.usestring.ai
 

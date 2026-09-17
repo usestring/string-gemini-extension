@@ -1,7 +1,7 @@
 description = "Research a topic on the live web — search, read the best sources, and report with citations."
 prompt = """Research this topic using String Web Access: {{args}}
 
-For a publicly documented String product question without a supplied String source URL, call web_access_product_help first. If its sources fully answer the question and wider research was not requested, report with those citations and stop. Otherwise continue with the wider-web fallback below. For a comparison with a supplied non-String URL, use product help for the String side and web_access_fetch for the other side; widen the research only if needed.
+For a publicly documented String product question when no supplied URL answers the String side, call web_access_product_help first. If its sources fully answer the question and wider research was not requested, report with those citations and stop. Otherwise continue with the wider-web fallback below. For a comparison where the supplied URL covers only the other side, use product help for String and web_access_fetch for that URL; widen the research only if needed.
 
 For every other topic, or when product help does not settle the question, follow this wider-web fallback: search → fetch → browser.
 

@@ -11,7 +11,7 @@ prompt = """Verify that String Web Access is configured and working.
 
 5. Report which tools responded, and what to do next if any failed:
    - All three fail → the key or connection is likely invalid or unset
-   - Product help succeeds while fetch and search fail → authentication worked; investigate Web Access access, credits, or service health instead
+   - Product help succeeds while fetch and search fail → the MCP connection works, but product help does not validate a raw API key; check key validity, then Web Access access, credits, or service health
    - Product help fails → report that error separately
    - Other partial failures → report each specific error
    - Do not retry failures in a loop

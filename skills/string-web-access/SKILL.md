@@ -22,8 +22,8 @@ bearer API key from [portal.usestring.ai](https://portal.usestring.ai).
 
 | You have | Start with | Skill |
 | --- | --- | --- |
-| A publicly documented String product question without a String source URL | `web_access_product_help` | [string-product-help](../string-product-help/SKILL.md) |
-| A comparison between String and a supplied non-String URL | `web_access_product_help` + `web_access_fetch` | [product help](../string-product-help/SKILL.md) + [fetch](../string-fetch/SKILL.md) |
+| A publicly documented String product question when no supplied URL answers the String side | `web_access_product_help` | [string-product-help](../string-product-help/SKILL.md) |
+| A comparison where a supplied URL covers only the other side | `web_access_product_help` + `web_access_fetch` | [product help](../string-product-help/SKILL.md) + [fetch](../string-fetch/SKILL.md) |
 | Another question, no URL | `web_access_search` | [string-search](../string-search/SKILL.md) |
 | A URL | `web_access_fetch` | [string-fetch](../string-fetch/SKILL.md) |
 | A site, need every page | `web_access_sitemap` | [string-sitemap](../string-sitemap/SKILL.md) |
@@ -44,15 +44,16 @@ often silent — you get HTTP 200 and markup that simply has no data in it.
 If you find yourself parsing a page that says "verify you are human", "access denied", or
 "this page isn't available right now", you fetched a block screen, not the page.
 
-If a supplied String URL answers the product question, fetch it instead of using product help. For
-a mixed comparison, use product help for the String side and fetch the supplied non-String URL. Do
-not use product help for account state, private contracts, live incidents, or support cases; public
-site pages cannot settle those requests.
+If a supplied URL answers the String side, fetch it instead of using product help. For a mixed
+comparison where the URL covers only the other side, use product help for String and fetch that URL.
+Do not use product help for account state, private contracts, live incidents, or support cases;
+public site pages cannot settle those requests.
 
 ## Planning a wider-web research task
 
-For public String product questions without a String source URL, call product help first. Continue
-into the wider-web workflow only when its sources do not fully answer or wider research is requested.
+For public String product questions when no supplied URL answers the String side, call product help
+first. Continue into the wider-web workflow only when its sources do not fully answer or wider
+research is requested.
 
 1. **Search first, and search narrowly.** One good query beats three vague ones. Read
    [searching](references/searching.md) for query construction.

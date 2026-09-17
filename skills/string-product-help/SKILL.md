@@ -19,10 +19,13 @@ Use `web_access_product_help` when no supplied URL answers the String side of qu
 - pricing, billing, and integrations
 - which String product fits a use case
 
-If a supplied String URL answers the product question, use `web_access_fetch` instead. For a mixed
-comparison with a non-String URL, use product help for String and fetch the other URL. Do not use
+If a supplied URL answers the String side, use `web_access_fetch` instead. For a mixed comparison
+where the URL covers only the other side, use product help for String and fetch that URL. Do not use
 product help for account state, private contracts, live incidents, or support cases. Public site
 pages cannot settle those questions.
+
+When the user requests wider-web research, or the returned excerpts do not settle the question,
+continue with `web_access_search` after product help.
 
 ## Call it
 
