@@ -10,7 +10,8 @@ prompt = """Verify that String Web Access is configured and working.
 4. Ask product help what String Web Access does and confirm documentation excerpts come back with source URLs.
 
 5. Report which tools responded, and what to do next if any failed:
-   - Fetch and search both empty or erroring → the key or Web Access access is likely the issue, even if product help succeeds
+   - All three fail → the key or connection is likely invalid or unset
+   - Product help succeeds while fetch and search fail → authentication worked; investigate Web Access access, credits, or service health instead
    - Product help fails → report that error separately
    - Other partial failures → report each specific error
    - Do not retry failures in a loop
