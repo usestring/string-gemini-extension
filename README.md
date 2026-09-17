@@ -50,7 +50,7 @@ Ask Gemini in plain language:
 
 | Command | What it does |
 | --- | --- |
-| `/string-setup` | Checks the connection and confirms the read tools respond |
+| `/string-setup` | Checks the connection and confirms fetch, search, and product help respond |
 | `/web-research <topic>` | Searches, reads the best sources, reports back with citations |
 
 ## Skills

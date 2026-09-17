@@ -3,15 +3,15 @@ name: string-web-access
 description: |
   Best practices for getting web content with String Web Access. Load this before any
   multi-step web task — research, competitive analysis, monitoring a set of pages, or
-  anything where one fetch is not enough. Covers the search → fetch → browser escalation
-  rule, when each tool is the right one, how to handle blocked or empty responses, and how
-  to keep cost and latency down. Also load when a fetch returns a block page, a CAPTCHA, or
-  an empty body and you need to know what to change.
+  anything where one fetch is not enough. Covers when String product help is the right first
+  call, the search → fetch → browser escalation rule for the wider web, how to handle blocked
+  or empty responses, and how to keep cost and latency down. Also load when a fetch returns a
+  block page, a CAPTCHA, or an empty body and you need to know what to change.
 ---
 
 # String Web Access
 
-Four tools, one rule for choosing between them.
+Five tools, one rule for choosing between product help and web operations.
 
 Server: `https://mcp.usestring.ai/v1/mcp` (configured by this plugin). Authentication is a
 bearer API key from [portal.usestring.ai](https://portal.usestring.ai).
@@ -22,7 +22,8 @@ bearer API key from [portal.usestring.ai](https://portal.usestring.ai).
 
 | You have | Start with | Skill |
 | --- | --- | --- |
-| A question, no URL | `web_access_search` | [string-search](../string-search/SKILL.md) |
+| A question about String products or services | `web_access_product_help` | [string-product-help](../string-product-help/SKILL.md) |
+| Another question, no URL | `web_access_search` | [string-search](../string-search/SKILL.md) |
 | A URL | `web_access_fetch` | [string-fetch](../string-fetch/SKILL.md) |
 | A site, need every page | `web_access_sitemap` | [string-sitemap](../string-sitemap/SKILL.md) |
 | An endpoint to write to | `web_access_request` | [string-request](../string-request/SKILL.md) |

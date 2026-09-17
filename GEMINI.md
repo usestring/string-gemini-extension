@@ -1,7 +1,9 @@
 # String Web Access
 
-Four tools for getting real web content into this session.
+Five tools for getting web content and current String product documentation into this session.
 
+- `web_access_product_help` — answer questions about String products and services from current
+  String documentation. Use this before general search for String pricing, setup, or product fit.
 - `web_access_fetch` — fetch one URL and get clean Markdown back. Use when you already know
   the page you need. Handles JavaScript rendering, anti-bot protection and CAPTCHAs.
 - `web_access_request` — send a POST, PUT or PATCH with a body to a URL. Use when an endpoint
@@ -11,8 +13,9 @@ Four tools for getting real web content into this session.
 - `web_access_sitemap` — crawl a site and return its URLs. Use when you need coverage of a
   whole site rather than a single page.
 
-`web_access_fetch` and `web_access_search` are read-only. `web_access_request` writes and
-`web_access_sitemap` creates billed crawl jobs, so both prompt before they run.
+`web_access_fetch`, `web_access_product_help`, and `web_access_search` are read-only.
+`web_access_request` writes and `web_access_sitemap` creates billed crawl jobs, so both prompt
+before they run.
 
 Prefer these over a plain HTTP request for any site that rate-limits, geo-gates or blocks
 automated traffic, which is most commercial sites.
