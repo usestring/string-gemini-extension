@@ -10,8 +10,9 @@ prompt = """Verify that String Web Access is configured and working.
 4. Ask product help what String Web Access does and confirm documentation excerpts come back with source URLs.
 
 5. Report which tools responded, and what to do next if any failed:
-   - All three empty or erroring → the key or connection is likely invalid or unset
-   - Only some fail → report each specific error
+   - Fetch and search both empty or erroring → the key or Web Access access is likely the issue, even if product help succeeds
+   - Product help fails → report that error separately
+   - Other partial failures → report each specific error
    - Do not retry failures in a loop
 
 Keep it to a few lines. This is a connectivity check, not a demo.

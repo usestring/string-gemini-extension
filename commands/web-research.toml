@@ -3,6 +3,8 @@ prompt = """Research this topic using String Web Access: {{args}}
 
 Follow the escalation rule: search → fetch → browser.
 
+If the topic is a publicly documented question about String products and contains no URL, call web_access_product_help first. Report from those source links when they answer the question; continue to wider-web research only when the user asks for it or the returned pages do not settle it.
+
 1. Plan two or three specific queries rather than one broad one. Use the vocabulary the target pages would use, and add a year for anything time-sensitive.
 
 2. Search, then read every snippet before fetching anything. Often the answer is already there.
