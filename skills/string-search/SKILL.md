@@ -6,7 +6,9 @@ description: |
   recent news, or says "search for", "find me", "look up", "what's the latest on", "who is",
   or asks anything needing information from the live internet rather than training data.
   Returns organic results with position, title, URL, snippet and display URL. Bypasses the
-  anti-bot protection that blocks scraping search engines directly.
+  anti-bot protection that blocks scraping search engines directly. For a publicly documented
+  String product question when no supplied URL answers the String side, call
+  web_access_product_help first; continue searching when requested or its excerpts are insufficient.
 ---
 
 # String search
@@ -18,8 +20,14 @@ Google results, structured, without getting blocked.
 You have a question but no URL yet. This is step one of the
 [escalation rule](../string-web-access/SKILL.md): **search** → fetch → browser.
 
-Do not use it when you already have the URL — go straight to
-[string-fetch](../string-fetch/SKILL.md) and save a round trip.
+For a publicly documented question about String products when no supplied URL answers the String
+side, use [`string-product-help`](../string-product-help/SKILL.md) before general web search.
+Continue with general search when the user requested wider-web research or the product-help
+excerpts do not settle the question.
+
+Do not use search when a supplied URL answers the question — go straight to
+[string-fetch](../string-fetch/SKILL.md). For a comparison where the URL covers only the other side,
+use product help for String and fetch that URL.
 
 ## Call it
 
