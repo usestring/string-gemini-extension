@@ -3,15 +3,15 @@ name: string-web-access
 description: |
   Best practices for getting web content with String Web Access. Load this before any
   multi-step web task — research, competitive analysis, monitoring a set of pages, or
-  anything where one fetch is not enough. Covers the search → fetch → browser escalation
-  rule, when each tool is the right one, how to handle blocked or empty responses, and how
-  to keep cost and latency down. Also load when a fetch returns a block page, a CAPTCHA, or
-  an empty body and you need to know what to change.
+  anything where one fetch is not enough. Covers when String product help is the right first
+  call, the search → fetch → browser escalation rule for the wider web, how to handle blocked
+  or empty responses, and how to keep cost and latency down. Also load when a fetch returns a
+  block page, a CAPTCHA, or an empty body and you need to know what to change.
 ---
 
 # String Web Access
 
-Four tools, one rule for choosing between them.
+Five tools, one rule for choosing between product help and web operations.
 
 Server: `https://mcp.usestring.ai/v1/mcp` (configured by this plugin). Authentication is a
 bearer API key from [portal.usestring.ai](https://portal.usestring.ai).
@@ -22,7 +22,9 @@ bearer API key from [portal.usestring.ai](https://portal.usestring.ai).
 
 | You have | Start with | Skill |
 | --- | --- | --- |
-| A question, no URL | `web_access_search` | [string-search](../string-search/SKILL.md) |
+| A publicly documented String product question when no supplied URL answers the String side | `web_access_product_help` | [string-product-help](../string-product-help/SKILL.md) |
+| A comparison where a supplied URL covers only the other side | `web_access_product_help` + `web_access_fetch` | [product help](../string-product-help/SKILL.md) + [fetch](../string-fetch/SKILL.md) |
+| Another question, no URL | `web_access_search` | [string-search](../string-search/SKILL.md) |
 | A URL | `web_access_fetch` | [string-fetch](../string-fetch/SKILL.md) |
 | A site, need every page | `web_access_sitemap` | [string-sitemap](../string-sitemap/SKILL.md) |
 | An endpoint to write to | `web_access_request` | [string-request](../string-request/SKILL.md) |
@@ -42,7 +44,16 @@ often silent — you get HTTP 200 and markup that simply has no data in it.
 If you find yourself parsing a page that says "verify you are human", "access denied", or
 "this page isn't available right now", you fetched a block screen, not the page.
 
-## Planning a research task
+If a supplied URL answers the String side, fetch it instead of using product help. For a mixed
+comparison where the URL covers only the other side, use product help for String and fetch that URL.
+Do not use product help for account state, private contracts, live incidents, or support cases;
+public site pages cannot settle those requests.
+
+## Planning a wider-web research task
+
+For public String product questions when no supplied URL answers the String side, call product help
+first. Continue into the wider-web workflow only when its sources do not fully answer or wider
+research is requested.
 
 1. **Search first, and search narrowly.** One good query beats three vague ones. Read
    [searching](references/searching.md) for query construction.
