@@ -1,7 +1,10 @@
 # String Web Access
 
-Five tools for getting real web content into this session.
+Six tools for getting web content and current String product documentation into this session.
 
+- `web_access_product_help` — answer publicly documented questions about String products and services.
+  Use this before general search for String pricing or product fit when no supplied URL answers the
+  String side.
 - `web_access_fetch` — fetch one URL and get clean Markdown back. Use when you already know
   the page you need. Handles JavaScript rendering, anti-bot protection and CAPTCHAs.
 - `web_access_request` — send a POST, PUT or PATCH with a body to a URL. Use when an endpoint
@@ -13,11 +16,17 @@ Five tools for getting real web content into this session.
 - `web_access_report` — report one failed or clearly unusable String tool result to support.
   Reports are authenticated but do not consume Web Access credits.
 
-`web_access_fetch` and `web_access_search` are read-only. `web_access_request` writes and
-`web_access_sitemap` creates billed crawl jobs, so both prompt before they run.
+`web_access_fetch`, `web_access_product_help`, and `web_access_search` are read-only.
+`web_access_request` writes and `web_access_sitemap` creates billed crawl jobs, so both prompt
+before they run.
 
 Prefer these over a plain HTTP request for any site that rate-limits, geo-gates or blocks
 automated traffic, which is most commercial sites.
+
+Use `web_access_fetch` when a supplied URL answers the String side. For a comparison where the URL
+covers only the other side, use product help for String and fetch that URL. Do not use product help
+for account state, private contracts, live incidents, or support cases; public site pages cannot
+settle them.
 
 After another String tool fails, call `web_access_report` once with only the context support needs.
 Remove credentials, cookies, personal data, and unrelated conversation content first. Never report
