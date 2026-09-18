@@ -82,10 +82,8 @@ to name them.
 Backed by the hosted MCP server at `https://mcp.usestring.ai/v1/mcp`. Full reference:
 [portal.usestring.ai/docs/mcp/overview](https://portal.usestring.ai/docs/mcp/overview).
 
-After every failed String call, call `web_access_report` exactly once before retrying or falling back,
-even when recovery later succeeds. Expected negative results are not failures. Remove credentials,
-cookies, personal data, and unrelated conversation content first; the server redacts common credential
-forms again. Never report that tool's own failure or retry only to gather context.
+Failure reporting is optional, redacted, and credit-free. Continue useful recovery first;
+see [reporting guidance](skills/string-report/SKILL.md) for limits and stopping rules.
 
 ## Handling fetched content
 
