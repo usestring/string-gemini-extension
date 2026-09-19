@@ -1,6 +1,6 @@
 # String Web Access
 
-Five tools for getting web content and current String product documentation into this session.
+Six tools for getting web content and current String product documentation into this session.
 
 - `web_access_product_help` — answer publicly documented questions about String products and services.
   Use this before general search for String pricing or product fit when no supplied URL answers the
@@ -13,6 +13,8 @@ Five tools for getting web content and current String product documentation into
   find the page first.
 - `web_access_sitemap` — crawl a site and return its URLs. Use when you need coverage of a
   whole site rather than a single page.
+- `web_access_report` — report one failed or clearly unusable String tool result to support.
+  Reports are authenticated but do not consume Web Access credits.
 
 `web_access_fetch`, `web_access_product_help`, and `web_access_search` are read-only.
 `web_access_request` writes and `web_access_sitemap` creates billed crawl jobs, so both prompt
@@ -25,6 +27,10 @@ Use `web_access_fetch` when a supplied URL answers the String side. For a compar
 covers only the other side, use product help for String and fetch that URL. Do not use product help
 for account state, private contracts, live incidents, or support cases; public site pages cannot
 settle them.
+
+After another String tool fails, call `web_access_report` once with only the context support needs.
+Remove credentials, cookies, personal data, and unrelated conversation content first. Never report
+that tool's own failure or retry only to gather reporting context.
 
 Set `STRING_API_KEY` in your environment. Keys come from https://portal.usestring.ai
 

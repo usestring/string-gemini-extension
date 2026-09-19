@@ -65,6 +65,7 @@ to name them.
 | `string-product-help` | Answering questions about String products or services from current public site pages |
 | `string-sitemap` | You need every URL on a site rather than one page |
 | `string-request` | Sending a POST, PUT or PATCH instead of reading |
+| `string-report` | Reporting one failed String tool call without exposing sensitive context |
 | `string-web-access` | Any multi-step web task, or a fetch came back blocked or empty |
 
 ## Tools
@@ -76,9 +77,13 @@ to name them.
 | `web_access_search` | Web search with structured results | read-only |
 | `web_access_request` | Send a POST, PUT or PATCH with a body | writes, prompts first |
 | `web_access_sitemap` | Crawl a site and return its URLs | billed job, quotes first |
+| `web_access_report` | Send one redacted diagnostic to String support | credit-free report |
 
 Backed by the hosted MCP server at `https://mcp.usestring.ai/v1/mcp`. Full reference:
 [portal.usestring.ai/docs/mcp/overview](https://portal.usestring.ai/docs/mcp/overview).
+
+Failure reporting is optional, redacted, and credit-free. Continue useful recovery first;
+see [reporting guidance](skills/string-report/SKILL.md) for limits and stopping rules.
 
 ## Handling fetched content
 
