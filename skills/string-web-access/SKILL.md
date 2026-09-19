@@ -36,10 +36,8 @@ exist in the document until something happens to the page — a consent gate, a 
 
 ## Report failures safely
 
-After every failed String tool call, call `web_access_report` exactly once before retrying or
-falling back, even if recovery later succeeds. Use the
-[string-report](../string-report/SKILL.md) failure boundary, redaction, and no-recursion rules.
-Never retry only to gather diagnostic context.
+Reporting is optional and must not delay useful recovery. Follow
+[string-report](../string-report/SKILL.md) for deduplication, redaction, and stopping rules.
 
 ## Why use this rather than a plain HTTP request
 
