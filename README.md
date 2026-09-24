@@ -1,9 +1,7 @@
 # String Web Access — Gemini CLI extension
 
-Fetch, search and map any website as clean, LLM-ready Markdown.
-
-[String Web Access](https://usestring.ai) handles proxy rotation, session handling
-and JavaScript rendering, so the agent gets usable page content rather than an error page.
+Fetch, search and map any website as clean, LLM-ready Markdown with
+[String Web Access](https://usestring.ai).
 
 ## Install
 
