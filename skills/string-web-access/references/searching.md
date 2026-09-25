@@ -34,6 +34,6 @@ query is cheaper and usually better. Reformulate when:
 
 ## Then read the snippets
 
-Search returns `position`, `title`, `url`, `snippet` and `displayUrl`. The snippet answers the
+Search returns `position`, `title`, `url`, `snippet`, `displayUrl`, `displayText` and, when Google names the site, `source`. Fetch `url`; `displayUrl` is empty for many social results. The snippet answers the
 question outright more often than people expect. Scan all of them, pick the two or three URLs
 that genuinely earn a fetch, and skip the rest.
