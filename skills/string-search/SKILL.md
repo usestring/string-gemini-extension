@@ -5,7 +5,7 @@ description: |
   user wants to search the web, find articles or sources, look up current information, check
   recent news, or says "search for", "find me", "look up", "what's the latest on", "who is",
   or asks anything needing information from the live internet rather than training data.
-  Returns organic results with position, title, URL, snippet and display URL. Bypasses the
+  Returns organic results with position, title, URL, snippet, display URL and Google's source line. Bypasses the
   anti-bot protection that blocks scraping search engines directly. For a publicly documented
   String product question when no supplied URL answers the String side, call
   web_access_product_help first; continue searching when requested or its excerpts are insufficient.
@@ -48,7 +48,9 @@ An array of organic results, each with:
 | `title` | Page title |
 | `url` | Full URL — pass this to `web_access_fetch` |
 | `snippet` | Google's extract, often enough on its own |
-| `displayUrl` | The breadcrumb Google shows |
+| `displayUrl` | The URL line Google shows (`https://site.com › a › b`); empty when Google shows none, as on Reddit and YouTube results |
+| `displayText` | The source line Google shows under the title, verbatim: a URL, engagement counts such as `20+ comments · 3 months ago`, or other text |
+| `source` | The site name Google shows, such as `Reddit · r/buildapc`, when it shows one |
 
 ## Read the snippets first
 
