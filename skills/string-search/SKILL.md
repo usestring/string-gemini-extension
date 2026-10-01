@@ -5,15 +5,14 @@ description: |
   user wants to search the web, find articles or sources, look up current information, check
   recent news, or says "search for", "find me", "look up", "what's the latest on", "who is",
   or asks anything needing information from the live internet rather than training data.
-  Returns organic results with position, title, URL, snippet, display URL and Google's source line. Bypasses the
-  anti-bot protection that blocks scraping search engines directly. For a publicly documented
+  Returns organic results with position, title, URL, snippet, display URL and Google's source line. For a publicly documented
   String product question when no supplied URL answers the String side, call
   web_access_product_help first; continue searching when requested or its excerpts are insufficient.
 ---
 
 # String search
 
-Google results, structured, without getting blocked.
+Google results, structured.
 
 ## When to use
 

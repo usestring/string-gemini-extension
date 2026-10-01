@@ -6,7 +6,7 @@ Six tools for getting web content and current String product documentation into 
   Use this before general search for String pricing or product fit when no supplied URL answers the
   String side.
 - `web_access_fetch` — fetch one URL and get clean Markdown back. Use when you already know
-  the page you need. Handles JavaScript rendering, anti-bot protection and CAPTCHAs.
+  the page you need.
 - `web_access_request` — send a POST, PUT or PATCH with a body to a URL. Use when an endpoint
   takes a payload rather than serving a page you read.
 - `web_access_search` — run a web search and get structured results. Use when you need to

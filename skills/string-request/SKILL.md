@@ -3,14 +3,13 @@ name: string-request
 description: |
   Send a POST, PUT or PATCH with a body to a URL, through String Web Access. Use when the user
   wants to submit something to an endpoint rather than read a page — calling a JSON API that
-  needs a payload, posting to a webhook, updating a record. Goes out over the same anti-bot
-  proxied path as string-fetch, so it works against endpoints that block ordinary clients. For
-  reading a page, use string-fetch instead.
+  needs a payload, posting to a webhook, updating a record. For reading a page, use
+  string-fetch instead.
 ---
 
 # String request
 
-A write, sent through the proxy.
+Send a POST, PUT or PATCH request to any URL, through String's Web Access API.
 
 ## When to use
 
