@@ -29,11 +29,14 @@ query is cheaper and usually better. Reformulate when:
 
 - The results are about the right words but the wrong topic — your vocabulary is off
 - Everything is a listicle or an aggregator — add `site:` or a more specific term
-- The results are old — add the year
+- The results are old — add the year, or pass `dateRange` (`"week"`, `"month"`, or a
+  `{ "from", "to" }` range) and `sortBy: "date"`
+- You need HTML rather than JSON — pass `format: "raw"`; structured (the default) is
+  recommended, and raw markup is capped per call
 - You get the company but wanted the concept, or vice versa — add a disambiguating word
 
 ## Then read the snippets
 
-Search returns `position`, `title`, `url`, `snippet`, `displayUrl`, `displayText` and, when Google names the site, `source`. Fetch `url`; `displayUrl` is empty for many social results. The snippet answers the
+Search returns `position`, `rank`, `title`, `url`, `snippet`, `displayUrl`, `displayText` and, when Google names the site, `source`. Fetch `url`; it is absent when Google hid the destination, so search for the title instead. `displayUrl` is empty for many social results. The snippet answers the
 question outright more often than people expect. Scan all of them, pick the two or three URLs
 that genuinely earn a fetch, and skip the rest.
