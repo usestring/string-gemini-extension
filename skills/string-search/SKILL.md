@@ -35,8 +35,43 @@ use product help for String and fetch that URL.
 { "query": "anthropic claude pricing per million tokens" }
 ```
 
-`query` is the only parameter. Be specific and descriptive — this is a real Google query, so
-everything you know about writing one applies.
+`query` is the only required parameter. Be specific and descriptive — this is a real Google
+query, so everything you know about writing one applies.
+
+## Narrow a Google search
+
+Four optional fields apply to Google results only; none of them combines with `aiMode`:
+
+| Field | What it does |
+| --- | --- |
+| `page` | The results page to start from, an integer from 1 to 30 (default 1), where page N is the page Google shows as N. Without `searchCount` the response is that one page; with it, `searchCount` results are collected starting from that page. Together they stay within the first 300 results: (page - 1) × 10 + (`searchCount`, or 10 without it) must be at most 300. A page past Google's last result returns no results with `zeroResults: true`. A page holds about 8 to 10 results, so separate `page` calls can repeat or skip a result; for one list without repeats, make one call with `searchCount`. |
+| `dateRange` | Limit results to a publication window: `"hour"`, `"day"`, `"week"`, `"month"` or `"year"` for the past hour through the past year, or `{ "from": "2024-01-01", "to": "2024-06-30" }` for a custom range of ISO dates (YYYY-MM-DD), inclusive. Either end is optional but at least one is required, and `from` must not be after `to`. |
+| `sortBy` | `"relevance"` (the default) or `"date"` for the newest results first. |
+| `format` | `"structured"` (JSON, the default) or `"raw"` (HTML). We recommend structured. See [Raw HTML](#raw-html). |
+
+```json
+{ "query": "heat pump grants", "page": 2, "dateRange": "month", "sortBy": "date" }
+```
+
+Reach for `dateRange` and `sortBy: "date"` when the question is about recent events, rather than
+only adding a year to the query.
+
+### Raw HTML
+
+`format` is `"structured"` (JSON, the default) or `"raw"` (HTML). We recommend structured; pass
+`format: "raw"` only when you need HTML:
+
+```json
+{ "query": "heat pump grants", "format": "raw" }
+```
+
+The response is `pages` in place of `results` and the surfaces, one entry per results page in page
+order. Each entry has `page`, `html`, `htmlBytes` (the full page's size) and `htmlTruncated`. The
+tool sends at most 60,000 bytes of markup per call, filling pages in page order, so a long
+`searchCount` can be cut. A page cut short has `htmlTruncated: true`, and a page past the limit
+has an empty `html` but keeps its number and size. For every page in full, call the HTTP API's
+`POST /v1/search` with `"format": "raw"`. `page`, `searchCount`, `dateRange` and `sortBy` work
+with raw, billed as structured results are.
 
 ## What comes back
 
@@ -44,9 +79,10 @@ An array of organic results, each with:
 
 | Field | What it is |
 | --- | --- |
-| `position` | Rank in the results |
+| `position` | Place in this response, from 1 |
+| `rank` | Google's own rank for the result, so the first result of `page` 3 is 21; Google only |
 | `title` | Page title |
-| `url` | Full URL — pass this to `web_access_fetch` |
+| `url` | Full URL — pass this to `web_access_fetch`. Absent when Google hid the destination; the result is still returned with its title and snippet |
 | `snippet` | Google's extract, often enough on its own |
 | `displayUrl` | The URL line Google shows (`https://site.com › a › b`); empty when Google shows none, as on Reddit and YouTube results |
 | `displayText` | The source line Google shows under the title, verbatim: a URL, engagement counts such as `20+ comments · 3 months ago`, or other text |
