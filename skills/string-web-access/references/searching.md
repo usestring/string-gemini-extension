@@ -31,8 +31,8 @@ query is cheaper and usually better. Reformulate when:
 - Everything is a listicle or an aggregator — add `site:` or a more specific term
 - The results are old — add the year, or pass `dateRange` (`"week"`, `"month"`, or a
   `{ "from", "to" }` range) and `sortBy: "date"`
-- You need HTML rather than JSON — pass `format: "raw"`; structured (the default) is
-  recommended, and raw markup is capped per call
+- You need HTML rather than JSON — pass `format: "raw"` for a single HTML page containing all the
+  results; structured (the default) is recommended, and raw markup is capped per call
 - You get the company but wanted the concept, or vice versa — add a disambiguating word
 
 ## Then read the snippets
