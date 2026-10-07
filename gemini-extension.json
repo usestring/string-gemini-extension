@@ -1,6 +1,6 @@
 {
   "name": "string-web-access",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Search the web, fetch or send requests to any URL, and map a site's URLs as clean, LLM-ready Markdown for Gemini CLI.",
   "contextFileName": "GEMINI.md",
   "settings": [
