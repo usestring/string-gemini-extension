@@ -44,10 +44,10 @@ Four optional fields apply to Google results only; none of them combines with `a
 
 | Field | What it does |
 | --- | --- |
-| `page` | The results page to start from, an integer from 1 to 30 (default 1), where page N is the page Google shows as N. Without `searchCount` the response is that one page; with it, `searchCount` results are collected starting from that page. Together they stay within the first 300 results: (page - 1) × 10 + (`searchCount`, or 10 without it) must be at most 300. A page past Google's last result returns no results with `zeroResults: true`. A page holds about 8 to 10 results, so separate `page` calls can repeat or skip a result; for one list without repeats, make one call with `searchCount`. |
+| `page` | The results page to start from, an integer from 1 to 30 (default 1), where page N is the page Google shows as N. Without `searchCount` the response is that one page, and with `format: "raw"` it always is; with `searchCount`, results are collected starting from that page. Together they stay within the first 300 results: (page - 1) × 10 + (`searchCount`, or 10 without it) must be at most 300. A page past Google's last result returns no results with `zeroResults: true`. A page holds about 8 to 10 results, so separate `page` calls can repeat or skip a result; for one list without repeats, make one call with `searchCount`. |
 | `dateRange` | Limit results to a publication window: `"hour"`, `"day"`, `"week"`, `"month"` or `"year"` for the past hour through the past year, or `{ "from": "2024-01-01", "to": "2024-06-30" }` for a custom range of ISO dates (YYYY-MM-DD), inclusive. Either end is optional but at least one is required, and `from` must not be after `to`. |
 | `sortBy` | `"relevance"` (the default) or `"date"` for the newest results first. |
-| `format` | `"structured"` (JSON, the default) or `"raw"` (a single HTML page containing all the results). We recommend structured. See [Raw HTML](#raw-html). |
+| `format` | `"structured"` (JSON, the default) or `"raw"` (the Google results page as HTML, one page per call; `page` only, no `searchCount`). We recommend structured. See [Raw HTML](#raw-html). |
 
 ```json
 { "query": "heat pump grants", "page": 2, "dateRange": "month", "sortBy": "date" }
@@ -58,18 +58,21 @@ only adding a year to the query.
 
 ### Raw HTML
 
-`format` is `"structured"` (JSON, the default) or `"raw"` (a single HTML page containing all the
-results). We recommend structured; pass `format: "raw"` only when you need HTML:
+`format` is `"structured"` (JSON, the default) or `"raw"` (the Google results page as HTML). We
+recommend structured; pass `format: "raw"` only when you need HTML:
 
 ```json
-{ "query": "heat pump grants", "format": "raw" }
+{ "query": "heat pump grants", "format": "raw", "page": 2 }
 ```
 
+Raw returns one Google results page per call. It supports `page` only, not `searchCount`: a raw
+call with `searchCount` is rejected (the API answers 400), so ask for page N with `page` and send
+one call per page, each billed as one search. `dateRange` and `sortBy` work with raw.
+
 The response is `html`, `htmlBytes` (the whole page's size) and `htmlTruncated`, in place of
-`results` and the surfaces. The tool sends at most 60,000 bytes of markup per call, so a long
-`searchCount` can be cut; a cut page has `htmlTruncated: true`. For the whole page, call the HTTP
-API's `POST /v1/search` with `"format": "raw"`. `page`, `searchCount`, `dateRange` and `sortBy` work
-with raw, billed as structured results are.
+`results` and the surfaces. The tool sends at most 60,000 bytes of markup per call, so a large
+page can be cut; a cut page has `htmlTruncated: true`. For the whole page, call the HTTP API's
+`POST /v1/search` with `"format": "raw"`.
 
 ## What comes back
 
