@@ -35,6 +35,12 @@ query is cheaper and usually better. Reformulate when:
   page per call (choose it with `page`; `searchCount` is rejected with raw); structured (the
   default) is recommended, and raw markup is capped per call
 - You get the company but wanted the concept, or vice versa — add a disambiguating word
+- You want pictures, products, businesses, videos, books or forum threads rather than pages —
+  pass `searchType` (`"images"`, `"shopping"`, `"places"`, `"videos"`, `"books"` or `"forums"`);
+  images, shopping and places answer in `images`, `products` and `places`, not `results`
+- The results are cluttered or off-country — pass `safeSearch: true` to remove explicit results,
+  `restrictCountry` (a two-letter code) to keep only pages from one country, or `verbatim: true`
+  to match the words exactly; `autocorrect: false` keeps Google from correcting the query
 
 ## Then read the snippets
 
