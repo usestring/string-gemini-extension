@@ -3,10 +3,9 @@ name: string-fetch
 description: |
   Fetch any web page and get clean, LLM-ready Markdown back, via String Web Access. Use when
   the user gives you a URL, asks you to read, open, summarize or extract from a page, or when
-  a search result needs its full content. Handles proxy rotation, anti-bot protection,
-  CAPTCHAs and JavaScript rendering, so it works on sites that block ordinary requests. Also
-  supports custom headers, country-specific proxies and driving a real browser through clicks
-  and scrolls before capture. Reads only — to send a POST, PUT or PATCH, use string-request.
+  a search result needs its full content. Also supports custom headers, country-specific
+  proxies and driving a real browser through clicks and scrolls before capture. Reads only —
+  to send a POST, PUT or PATCH, use string-request.
 ---
 
 # String fetch
