@@ -41,10 +41,9 @@ Reporting is optional and must not delay useful recovery. Follow
 
 ## Why use this rather than a plain HTTP request
 
-Every request egresses through rotating residential proxies with anti-bot handling and
-CAPTCHA solving. For most commercial sites a direct `curl` or `fetch` returns a block page,
-a challenge interstitial, or an empty shell where the content should be. That failure is
-often silent — you get HTTP 200 and markup that simply has no data in it.
+For most commercial sites a direct `curl` or `fetch` returns a block page, a challenge
+interstitial, or an empty shell where the content should be. That failure is often silent —
+you get HTTP 200 and markup that simply has no data in it.
 
 If you find yourself parsing a page that says "verify you are human", "access denied", or
 "this page isn't available right now", you fetched a block screen, not the page.
