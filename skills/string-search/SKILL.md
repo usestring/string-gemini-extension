@@ -59,6 +59,11 @@ combine with `aiMode`.
 { "query": "eames lounge chair", "searchType": "images", "searchCount": 150 }
 ```
 
+The `shopping` tab is incomplete: one page of about 55 cards, none with a `url`. For a product,
+price or merchant question, also run the ordinary search (`searchType` omitted or `"web"`), which
+usually returns better results and the merchant pages to fetch. Use shopping to supplement it, not
+to replace it.
+
 ## Filter a Google search
 
 Five optional filters; none of them combines with `aiMode`:
