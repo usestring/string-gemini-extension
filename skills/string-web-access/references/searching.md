@@ -37,7 +37,9 @@ query is cheaper and usually better. Reformulate when:
 - You get the company but wanted the concept, or vice versa — add a disambiguating word
 - You want pictures, products, businesses, videos, books or forum threads rather than pages —
   pass `searchType` (`"images"`, `"shopping"`, `"places"`, `"videos"`, `"books"` or `"forums"`);
-  images, shopping and places answer in `images`, `products` and `places`, not `results`
+  images, shopping and places answer in `images`, `products` and `places`, not `results`;
+  for a product, price or merchant question, run a `web` search too, since the shopping tab is
+  one page of cards with no `url`
 - The results are cluttered or off-country — pass `safeSearch: true` to remove explicit results,
   `restrictCountry` (a two-letter code) to keep only pages from one country, or `verbatim: true`
   to match the words exactly; `autocorrect: false` keeps Google from correcting the query
