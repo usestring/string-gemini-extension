@@ -1,20 +1,13 @@
-description = "Set up String Web Access — check the connection and confirm fetch, search, and product help respond."
+description = "Set up String Web Access — check the connection and confirm fetch and search respond."
 prompt = """Verify that String Web Access is configured and working.
 
 1. Confirm the API key setting is present. If it is missing, tell the user to create a key at https://portal.usestring.ai and run `gemini extensions config string-web-access`, then stop.
 
-2. Check the connection with the cheapest possible call — fetch `https://example.com` and confirm Markdown comes back.
+2. Read `https://example.com` with web_access_fetch and confirm Markdown comes back.
 
-3. Run one search for a simple query and confirm structured results come back with title, url and snippet.
+3. Run one web_access_search for a simple query and confirm the results carry title, url and snippet.
 
-4. Ask product help what String Web Access does and confirm documentation excerpts come back with source URLs.
-
-5. Report which tools responded, and what to do next if any failed:
-   - All three fail → the key or connection is likely invalid or unset
-   - Product help succeeds while fetch and search fail → the MCP connection works, but product help does not validate a raw API key; check key validity, then Web Access access, credits, or service health
-   - Product help fails → report that error separately
-   - Other partial failures → report each specific error
-   - Do not retry failures in a loop
+4. Report which tools responded. If both fail, the key or the connection is likely the cause. Report a partial failure tool by tool. Do not retry failures in a loop.
 
 Keep it to a few lines. This is a connectivity check, not a demo.
 """
