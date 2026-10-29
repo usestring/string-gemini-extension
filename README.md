@@ -48,40 +48,38 @@ Ask Gemini in plain language:
 
 | Command | What it does |
 | --- | --- |
-| `/string-setup` | Checks the connection and confirms fetch, search, and product help respond |
+| `/string-setup` | Checks the connection and confirms fetch and search respond |
 | `/web-research <topic>` | Searches, reads the best sources, reports back with citations |
 
 ## Skills
 
-Six skills ship with the extension. Gemini picks the right one on its own; you never have
-to name them.
+Four skills ship with the extension, one per job. Gemini picks the right one on its own; you
+never have to name them.
 
 | Skill | Use when |
 | --- | --- |
-| `string-search` | Finding sources, current information, recent news |
-| `string-fetch` | Reading a page you already have the URL for |
-| `string-product-help` | Answering questions about String products or services from current public site pages |
-| `string-sitemap` | You need every URL on a site rather than one page |
-| `string-request` | Sending a POST, PUT or PATCH instead of reading |
-| `string-report` | Reporting one failed String tool call without exposing sensitive context |
-| `string-web-access` | Any multi-step web task, or a fetch came back blocked or empty |
+| `web-search` | Finding sources for a question when there is no URL yet, and answering with citations |
+| `read-page` | Reading a URL, then summarizing it, answering from it or pulling its facts into a table |
+| `map-site` | You need the URLs on a site or a section of it: quote, approve, crawl, then read them |
+| `send-request` | Sending a request you name, such as a GraphQL query, and showing the data it returns |
+
+Each skill carries the access rules that apply to it: public content and your own accounts only,
+no getting past logins or paywalls, and page content treated as data rather than instructions.
 
 ## Tools
 
-| Tool | What it does | Effect |
-| --- | --- | --- |
-| `web_access_fetch` | Fetch one URL as Markdown | read-only |
-| `web_access_product_help` | Get current String public-site excerpts for a product question | read-only |
-| `web_access_search` | Web search with structured results | read-only |
-| `web_access_request` | Send a POST, PUT or PATCH with a body | writes, prompts first |
-| `web_access_sitemap` | Crawl a site and return its URLs | billed job, quotes first |
-| `web_access_report` | Send one redacted diagnostic to String support | credit-free report |
+The MCP server at `https://mcp.usestring.ai/v3/mcp` provides six tools.
 
-Backed by the hosted MCP server at `https://mcp.usestring.ai/v1/mcp`. Full reference:
-[portal.usestring.ai/docs/mcp/overview](https://portal.usestring.ai/docs/mcp/overview).
+| Tool | What it does |
+| --- | --- |
+| `web_access_search` | Searches the web and returns ranked results with titles, URLs and snippets. Read-only. |
+| `web_access_fetch` | Reads one public URL and returns it as Markdown, the page's raw body, or a JSON envelope with the status and headers. Read-only. |
+| `web_access_sitemap_quote` | Quotes a crawl of one site: estimated pages and cost. Crawls nothing and costs nothing. |
+| `web_access_sitemap_start` | Starts a quoted crawl after the user approves the quote. |
+| `web_access_sitemap_status` | Reports a crawl's progress, and lists its URLs once it finishes. Read-only. |
+| `web_access_request` | Sends a POST, PUT or PATCH the user asks for, such as a GraphQL query, and returns the response. Prompts before it runs. |
 
-Failure reporting is optional, redacted, and credit-free. Continue useful recovery first;
-see [reporting guidance](skills/string-report/SKILL.md) for limits and stopping rules.
+Full reference: [portal.usestring.ai/docs/mcp/overview](https://portal.usestring.ai/docs/mcp/overview).
 
 ## Handling fetched content
 
@@ -98,12 +96,11 @@ asked for them, and never to put credentials in a `url`, `query` or `headers` va
 **Everything errors.** The key is probably missing or wrong. Run
 `gemini extensions config string-web-access`.
 
-**A fetch returns a block page or an empty body.** Change one thing rather than retrying the
-same call: turn on JavaScript rendering first, then set a country. The `string-web-access`
-skill covers the escalation rule.
+**A page comes back empty.** It probably renders in the browser. The `read-page` skill retries
+once with `executeJS: true`.
 
-**A crawl sits pending.** Sitemap runs as an asynchronous job. It quotes the cost, waits for
-approval, then pages through results.
+**A crawl sits pending.** A crawl runs as an asynchronous job. It starts only after you approve
+the quote, and `web_access_sitemap_status` reports its progress until the URLs are ready.
 
 ## Also available
 
@@ -111,7 +108,7 @@ approval, then pages through results.
 | --- | --- |
 | Claude Code | [usestring/string-claude-plugin](https://github.com/usestring/string-claude-plugin) |
 | Cursor | [usestring/string-cursor-plugin](https://github.com/usestring/string-cursor-plugin) |
-| Any MCP client | `https://mcp.usestring.ai/v1/mcp` with an `Authorization: Bearer` header |
+| Any MCP client | `https://mcp.usestring.ai/v3/mcp` with an `Authorization: Bearer` header |
 
 ## Support
 
