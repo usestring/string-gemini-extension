@@ -53,7 +53,7 @@ Ask Gemini in plain language:
 
 ## Skills
 
-Eleven skills ship with the extension, one per job. Gemini picks the right one on its own; you
+Twelve skills ship with the extension, one per job. Gemini picks the right one on its own; you
 never have to name them.
 
 | Skill | Use when |
@@ -62,13 +62,14 @@ never have to name them.
 | `read-page` | Reading a URL, then summarizing it, answering from it or pulling its facts into a table |
 | `map-site` | You need the URLs on a site or a section of it: quote, approve, crawl, then read them |
 | `send-request` | Sending a request you name, such as a GraphQL query, and showing the data it returns |
-| `deep-research` | A question needs several sources: a cited report, comparison or table |
-| `read-docs` | Answering from the current official docs, release notes or API reference for a library |
-| `company-research` | A sourced profile of a company: products, published pricing, leadership and recent news |
-| `find-local-businesses` | Businesses in or near a place, with rating, address, hours, phone and website |
-| `build-a-list` | Every company, organization or product that matches your criteria, with a source per row |
-| `compare-products` | Choosing between products by current price, merchant, rating and reviews |
-| `search-visibility` | Where a site ranks on Google from a country or city, and whether AI Overview and AI Mode cite it |
+| `research-a-question` | A question needs several sources, with a citation for every claim |
+| `find-places` | Businesses and places near a location, with rating, address, hours, phone and website |
+| `find-products` | Current prices, merchants, ratings and reviews from Google Shopping |
+| `search-forums` | What people say in forums and community threads, with links |
+| `find-images-and-videos` | Images and videos on a topic, with source pages, sizes, channels and lengths |
+| `search-by-location` | Results as someone in a country, city or spot sees them, and where a site ranks there |
+| `check-ai-answers` | What Google's AI Overview and AI Mode answer, and which sites they cite |
+| `build-a-list` | Everything that meets your criteria in one deduplicated table, with a source per row |
 
 Each skill carries the access rules that apply to it: public content and your own accounts only,
 no getting past logins or paywalls, and page content treated as data rather than instructions.
