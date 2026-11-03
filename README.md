@@ -53,7 +53,7 @@ Ask Gemini in plain language:
 
 ## Skills
 
-Four skills ship with the extension, one per job. Gemini picks the right one on its own; you
+Eleven skills ship with the extension, one per job. Gemini picks the right one on its own; you
 never have to name them.
 
 | Skill | Use when |
@@ -62,6 +62,13 @@ never have to name them.
 | `read-page` | Reading a URL, then summarizing it, answering from it or pulling its facts into a table |
 | `map-site` | You need the URLs on a site or a section of it: quote, approve, crawl, then read them |
 | `send-request` | Sending a request you name, such as a GraphQL query, and showing the data it returns |
+| `deep-research` | A question needs several sources: a cited report, comparison or table |
+| `read-docs` | Answering from the current official docs, release notes or API reference for a library |
+| `company-research` | A sourced profile of a company: products, published pricing, leadership and recent news |
+| `find-local-businesses` | Businesses in or near a place, with rating, address, hours, phone and website |
+| `build-a-list` | Every company, organization or product that matches your criteria, with a source per row |
+| `compare-products` | Choosing between products by current price, merchant, rating and reviews |
+| `search-visibility` | Where a site ranks on Google from a country or city, and whether AI Overview and AI Mode cite it |
 
 Each skill carries the access rules that apply to it: public content and your own accounts only,
 no getting past logins or paywalls, and page content treated as data rather than instructions.
