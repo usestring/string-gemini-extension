@@ -32,7 +32,7 @@ picker of your organisation's active keys, and you choose which one the app may 
 apps are listed in [settings](https://portal.usestring.ai/settings) with the key each one uses,
 and disconnecting takes effect within a minute. Claude and ChatGPT support this today. The
 Gemini CLI is not wired up for it yet, so use the key above. See
-[the remote MCP docs](https://portal.usestring.ai/docs/mcp/remote).
+[the remote MCP docs](https://docs.usestring.ai/mcp/remote).
 
 ## Try it
 
@@ -81,7 +81,7 @@ The MCP server at `https://mcp.usestring.ai?login` provides eight tools.
 | `web_access_balance` | Reads the account's balance, recorded spend and remaining credit. Free to call. Read-only. |
 | `web_access_product_help` | Answers questions about String's products, pricing and integrations from String's public site, with source links. Read-only. |
 
-Full reference: [portal.usestring.ai/docs/mcp/overview](https://portal.usestring.ai/docs/mcp/overview).
+Full reference: [docs.usestring.ai/mcp/overview](https://docs.usestring.ai/mcp/overview).
 
 ## Handling fetched content
 
