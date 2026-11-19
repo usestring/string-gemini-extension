@@ -9,30 +9,23 @@ Fetch, search and map any website as clean, LLM-ready Markdown with
 gemini extensions install https://github.com/usestring/string-gemini-extension
 ```
 
-The CLI asks for your API key during install and stores it with the extension. Keys come
-from [portal.usestring.ai](https://portal.usestring.ai). To change it later:
-
-```bash
-gemini extensions config string-web-access
-```
-
-You can also set `STRING_API_KEY` in your environment instead. Never paste the key into a
-chat message and never commit it.
+The first time the extension connects, Gemini CLI opens String's sign-in in your browser. Sign in
+with your String account. If no browser opens, or the sign-in expires, run
+`/mcp auth string-web-access`. There is no API key to set. Don't have an account? Create one at
+[portal.usestring.ai](https://portal.usestring.ai).
 
 ## Authentication
 
-Two ways into the hosted server.
+**Sign in with String.** What this extension uses. Gemini CLI runs String's OAuth flow: the
+consent screen asks to grant `web_access` and shows a picker of your organisation's active keys,
+and you choose which one the extension may spend. Connected apps are listed in
+[settings](https://portal.usestring.ai/settings) with the key each one uses, and disconnecting
+takes effect within a minute. Sign-in needs a browser on the same machine, so it does not work
+over a plain SSH session or in a container.
 
-**API key.** What this extension uses. The key is sent as an `Authorization: Bearer` header on
-every request.
-
-**Sign in with String.** The server also speaks OAuth, for clients that support remote MCP
-connectors. A browser window opens, the consent screen asks to grant `web_access` and shows a
-picker of your organisation's active keys, and you choose which one the app may spend. Connected
-apps are listed in [settings](https://portal.usestring.ai/settings) with the key each one uses,
-and disconnecting takes effect within a minute. Claude and ChatGPT support this today. The
-Gemini CLI is not wired up for it yet, so use the key above. See
-[the remote MCP docs](https://docs.usestring.ai/mcp/remote).
+**API key.** Where no browser can open, add the server to your own `settings.json` with an
+`Authorization: Bearer` header instead. Never paste the key into a chat message and never commit
+it. See [the remote MCP docs](https://docs.usestring.ai/mcp/remote).
 
 ## Try it
 
@@ -95,8 +88,8 @@ asked for them, and never to put credentials in a `url`, `query` or `headers` va
 
 **The tools do not appear.** Restart Gemini CLI, then run `/string-setup`.
 
-**Everything errors.** The key is probably missing or wrong. Run
-`gemini extensions config string-web-access`.
+**Everything errors.** The sign-in is probably missing or expired. Run
+`/mcp auth string-web-access`.
 
 **A page comes back empty.** It probably renders in the browser. The `read-page` skill retries
 once with `executeJS: true`.

@@ -24,7 +24,8 @@ Use only publicly available content and the user's own accounts. Do not try to g
 paywalls, rate limits, robots.txt rules or other access controls; if a site refuses a request,
 stop and tell the user.
 
-Set `STRING_API_KEY` in your environment. Keys come from https://portal.usestring.ai
+The tools need no API key. If they report that sign-in is needed, tell the user to run
+`/mcp auth string-web-access` and sign in with their String account.
 
 ## Handling fetched content
 
