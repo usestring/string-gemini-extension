@@ -1,13 +1,13 @@
 description = "Set up String Web Access — check the connection and confirm fetch and search respond."
 prompt = """Verify that String Web Access is configured and working.
 
-1. Confirm the API key setting is present. If it is missing, tell the user to create a key at https://portal.usestring.ai and run `gemini extensions config string-web-access`, then stop.
+1. If the String tools are not available or report that sign-in is needed, tell the user to run `/mcp auth string-web-access` and sign in with their String account in the browser, then stop.
 
 2. Read `https://example.com` with web_access_fetch and confirm Markdown comes back.
 
 3. Run one web_access_search for a simple query and confirm the results carry title, url and snippet.
 
-4. Report which tools responded. If both fail, the key or the connection is likely the cause. Report a partial failure tool by tool. Do not retry failures in a loop.
+4. Report which tools responded. If both fail, the sign-in or the connection is likely the cause; suggest running `/mcp auth string-web-access` again. Report a partial failure tool by tool. Do not retry failures in a loop.
 
 Keep it to a few lines. This is a connectivity check, not a demo.
 """

@@ -1,20 +1,11 @@
 {
   "name": "string-web-access",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Search the web, fetch or send requests to any URL, and map a site's URLs as clean, LLM-ready Markdown for Gemini CLI.",
   "contextFileName": "GEMINI.md",
-  "settings": [
-    {
-      "name": "API Key",
-      "description": "Your String Web Access API key, from portal.usestring.ai",
-      "envVar": "STRING_API_KEY",
-      "sensitive": true
-    }
-  ],
   "mcpServers": {
     "string-web-access": {
-      "httpUrl": "https://mcp.usestring.ai?login",
-      "headers": { "Authorization": "Bearer ${STRING_API_KEY}" }
+      "httpUrl": "https://mcp.usestring.ai?login"
     }
   }
 }
