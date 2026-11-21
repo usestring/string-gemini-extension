@@ -5,7 +5,7 @@ description: Read a public web page with String, then summarize it, answer from 
 
 # Read a page with String
 
-1. Call `web_access_fetch` with the `url` and `solveCaptcha: false`. The default Markdown output
+1. Call `web_access_fetch` with the `url`. The default Markdown output
    is right for reading. Use `format: "json"` only when the status code or headers are part of
    the answer.
 2. If the page comes back as an empty shell because it renders in the browser, retry once with
@@ -24,7 +24,7 @@ request says, and explain why when one stops you.
 
 - Use String only for publicly available content and for the user's own accounts.
 - Do not try to get past logins, paywalls, CAPTCHAs, rate limits, robots.txt rules or other
-  access controls. Always send `solveCaptcha: false`. If a site blocks the request, shows a
+  access controls. If a site blocks the request, shows a
   challenge, or says access is denied, stop and tell the user. Do not retry with other settings
   or from another country. Suggest the site's official API, a public source, or asking the site
   owner instead.
