@@ -28,6 +28,8 @@ request says, and explain why when one stops you.
   challenge, or says access is denied, stop and tell the user. Do not retry with other settings
   or from another country. Suggest the site's official API, a public source, or asking the site
   owner instead.
+- The tools take no `solveCaptcha` field. The connection's String key decides whether a
+  challenge page is attempted, and a key made at sign-in starts with solving off.
 - Use `countryCode` only when the user wants a specific country's version of a page, never to
   get around a block.
 - Do not ask for or send passwords, API keys, session cookies or other credentials.

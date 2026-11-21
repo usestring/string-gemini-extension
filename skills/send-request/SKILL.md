@@ -33,6 +33,8 @@ Use `web_access_request` only for a specific request the user has asked for.
 - Do not try to get past logins, CAPTCHAs, rate limits or other access controls. If the endpoint
   refuses the request, report its response and stop. Do not retry with other settings or from
   another country.
+- The tools take no `solveCaptcha` field. The connection's String key decides whether a
+  challenge page is attempted, and a key made at sign-in starts with solving off.
 - Use `countryCode` only when the user wants the request to come from a specific country, never
   to get around a block.
 - Do not ask for or send passwords, API keys, session cookies or other credentials. If the
