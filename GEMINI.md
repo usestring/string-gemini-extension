@@ -15,6 +15,10 @@ Eight tools for searching the web, reading pages, mapping sites and checking the
 - `web_access_product_help`: answer questions about String's products, pricing and integrations,
   with source links.
 
+For a whole task, follow the skill that fits it: `research-a-question`, `find-places`,
+`find-products`, `search-forums`, `find-images-and-videos`, `search-by-location`, `check-ai-answers`
+and `build-a-list`. Each combines the tools above.
+
 `web_access_search`, `web_access_fetch` and `web_access_sitemap_status` are read-only. A quote
 costs nothing; `web_access_sitemap_start` spends the account's balance, so never call it before
 the user approves the quote. `web_access_request` can send or change data, so confirm it with the
