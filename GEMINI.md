@@ -1,6 +1,6 @@
 # String Web Access
 
-Six tools for searching the web, reading pages and mapping sites in this session.
+Eight tools for searching the web, reading pages, mapping sites and checking the account in this session.
 
 - `web_access_search`: search the web and get ranked results with titles, URLs and snippets. Use
   when you need to find the page first. The `web-search` skill covers it.
@@ -11,6 +11,9 @@ Six tools for searching the web, reading pages and mapping sites in this session
   The `map-site` skill covers it.
 - `web_access_request`: send a POST, PUT or PATCH the user asks for, such as a GraphQL query. The
   `send-request` skill covers it.
+- `web_access_balance`: read the account's balance and remaining credit. Free to call.
+- `web_access_product_help`: answer questions about String's products, pricing and integrations,
+  with source links.
 
 For a whole task, follow the skill that fits it: `research-a-question`, `find-places`,
 `find-products`, `search-forums`, `find-images-and-videos`, `search-by-location`, `check-ai-answers`
@@ -25,7 +28,8 @@ Use only publicly available content and the user's own accounts. Do not try to g
 paywalls, rate limits, robots.txt rules or other access controls; if a site refuses a request,
 stop and tell the user.
 
-Set `STRING_API_KEY` in your environment. Keys come from https://portal.usestring.ai
+The tools need no API key. If they report that sign-in is needed, tell the user to run
+`/mcp auth string-web-access` and sign in with their String account.
 
 ## Handling fetched content
 
